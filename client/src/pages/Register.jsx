@@ -1,41 +1,41 @@
-import { FormInput, SubmitBtn, FormInput2, FormInputs } from '../components';
-import { Form, redirect } from 'react-router-dom';
-import FormPhone from '../components/FormPhone';
-import Logo from '../components/Logo';
-import customFetch from '../utils/customFetch';
-import { toast } from 'react-toastify';
-import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { FormInput, SubmitBtn, FormInput2, FormInputs } from '../components'
+import { Form, redirect } from 'react-router-dom'
+import FormPhone from '../components/FormPhone'
+import Logo from '../components/Logo'
+import customFetch from '../utils/customFetch'
+import { toast } from 'react-toastify'
+import { useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react'
 
 export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
+  const formData = await request.formData()
+  const data = Object.fromEntries(formData)
 
   try {
-    await customFetch.post('/auth/register', data);
-    toast.success('registration successful');
-    return redirect('/login');
+    await customFetch.post('/auth/register', data)
+    toast.success('registration successful')
+    return redirect('/login')
   } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    console.log(error);
-    return error;
+    toast.error(error?.response?.data?.msg)
+    console.log(error)
+    return error
   }
-};
+}
 
 const Register = () => {
-  const [password, setPassword] = useState('');
-  const [type, setType] = useState('password');
-  const [Icon, setIcon] = useState(EyeOff);
+  const [password, setPassword] = useState('')
+  const [type, setType] = useState('password')
+  const [Icon, setIcon] = useState(EyeOff)
 
   const handleToggle = () => {
     if (type === 'password') {
-      setIcon(Eye);
-      setType('text');
+      setIcon(Eye)
+      setType('text')
     } else {
-      setIcon(EyeOff);
-      setType('password');
+      setIcon(EyeOff)
+      setType('password')
     }
-  };
+  }
 
   return (
     <section className='h-full grid  place-items-center mt-4'>
@@ -44,10 +44,12 @@ const Register = () => {
         className='card w-96 lg:w-3/5 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4 border-t-4 border-primary'
       >
         <Logo />
-        <h4 className='text-center text-3xl font-bold mt-1'>Register</h4>
+        <h4 className='text-center text-3xl font-bold mt-1'>
+          Register Your Association, Group or Family.
+        </h4>
         <p className='text-center'>
-          If your association is already in SAGI, please use your existing
-          4-letter code.
+          If your association, group or family is already in SAGI, please use
+          your existing 4-letter code.
         </p>
         <div className='grid lg:grid-cols-2 gap-4 '>
           <FormInputs
@@ -129,6 +131,6 @@ const Register = () => {
         </div>
       </Form>
     </section>
-  );
-};
-export default Register;
+  )
+}
+export default Register
