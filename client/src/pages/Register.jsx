@@ -64,7 +64,7 @@ const Register = () => {
           />
         </div>
         <div className='grid lg:grid-cols-2 gap-4 '>
-          <FormInput type='email' label='email' name='email' />
+          <FormInput type='email' label='Email' name='email' />
           <FormPhone type='text' label='phone number' name='phoneNumber' />
         </div>
         <div className='grid lg:grid-cols-2 gap-4 '>
