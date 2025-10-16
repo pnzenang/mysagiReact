@@ -38,9 +38,11 @@ const Announcement = () => {
     //   <AnnouncementMembersContainer />
     // </AnnouncementContext.Provider>
     <h1 className='text-4xl py-36 '>
+      Sorry about your loss.
+      <br />
       Please announce your death by sending an email to one of the following
       SAGI emails:{' '}
-      <span>
+      <span className='font-bold'>
         info@sagiusa.org, info@sagi-transition.com or info@mysagi.org.
       </span>
       <br />
