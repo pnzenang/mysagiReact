@@ -47,7 +47,7 @@ const Announcement = () => {
       </span>
       <br />
       <br />
-      And be reminded that no documentation is needed while to announce a death.
+      And be reminded that no documentation is needed while announcing a death.
     </h1>
   )
 }
