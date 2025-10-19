@@ -1,43 +1,43 @@
-import { useAllMembersContext } from '../pages/AllMembers';
-import { ComplexPaginationContainer } from '../components';
-import { BsFillGridFill, BsList } from 'react-icons/bs';
-import Member from './Member';
+import { useAllMembersContext } from '../pages/AllMembers'
+import { ComplexPaginationContainer } from '../components'
+import { BsFillGridFill, BsList } from 'react-icons/bs'
+import Member from './Member'
 
 // import PageBtnContainer from './PageBtnContainer';
-import { useState } from 'react';
-import day from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
+import { useState } from 'react'
+import day from 'dayjs'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
 
-import { useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
-import { Link, useOutletContext, Form } from 'react-router-dom';
-import { FaPencil, FaTrashCan } from 'react-icons/fa6';
-day.extend(advancedFormat);
+import { useRef } from 'react'
+import { useReactToPrint } from 'react-to-print'
+import { Link, useOutletContext, Form } from 'react-router-dom'
+import { FaPencil, FaTrashCan } from 'react-icons/fa6'
+day.extend(advancedFormat)
 
 const TdStyle = {
   ThStyle: `w-1/6 min-w-[160px] border-l border-transparent py-1 pl-1 text-[11px] font-bold text-white lg:py-6 lg:px-4`,
   TdStyle: `text-dark border-b  border-primary bg-base-100  py-1 pl-12 text-left text-xs  font-bold uppercase`,
   TdStyle2: `text-dark border-b border-primary bg-base-100  py-1 pl-12 text-left text-xs font-bold uppercase`,
-};
+}
 
 const MembersContainer = () => {
-  const { user } = useOutletContext();
-  const contentToPrint = useRef(null);
+  const { user } = useOutletContext()
+  const contentToPrint = useRef(null)
   const handlePrint = useReactToPrint({
     documentTitle: 'Print This Document',
     removeAfterPrint: true,
-  });
+  })
 
-  const [layout, setLayout] = useState('list');
+  const [layout, setLayout] = useState('list')
   const setActiveStyles = (pattern) => {
     return `text-xl btn  btn-sm  ${
       pattern === layout
         ? 'btn-primary text-primary-content'
         : ' text-primary border-primary rounded-lg'
-    }`;
-  };
-  const { data } = useAllMembersContext();
-  const { members, numOfPages, totalMembers } = data;
+    }`
+  }
+  const { data } = useAllMembersContext()
+  const { members, numOfPages, totalMembers } = data
   return (
     <section>
       <div className='flex justify-between'>
@@ -50,7 +50,7 @@ const MembersContainer = () => {
         <div className='flex gap-x-2'>
           <button
             onClick={() => {
-              handlePrint(null, () => contentToPrint.current);
+              handlePrint(null, () => contentToPrint.current)
             }}
             className='btn btn-sm bg-success  text-white text-xs sm:text-sm'
           >
@@ -77,14 +77,13 @@ const MembersContainer = () => {
       <div ref={contentToPrint}>
         {members.length === 0 ? (
           <h4 className='text-2xl mt-16 '>
-            Welcome Delegate, your association has no members in this category
-            at this time.
+            Welcome Delegate, Please start adding your members.
           </h4>
         ) : layout === 'grid' ? (
           <>
             <ul className='grid grid-cols-1 gap-6 lg:grid-cols-2 pb-4 '>
               {members.map((member) => {
-                return <Member key={member._id} {...member} />;
+                return <Member key={member._id} {...member} />
               })}
             </ul>
             {numOfPages > 1 && <ComplexPaginationContainer />}
@@ -121,7 +120,7 @@ const MembersContainer = () => {
                         </thead>
                         <tbody>
                           {members.map((member) => {
-                            console.log(member);
+                            console.log(member)
                             const {
                               _id,
                               associationCode,
@@ -132,18 +131,18 @@ const MembersContainer = () => {
                               createdAt,
                               delegateRecommendation,
                               memberStatus,
-                            } = member;
-                            const time = day(Date.now());
-                            const tod = day(createdAt.toString());
-                            const m = time.diff(tod, 'days');
+                            } = member
+                            const time = day(Date.now())
+                            const tod = day(createdAt.toString())
+                            const m = time.diff(tod, 'days')
                             const matriculationSituation =
                               memberStatus === 'pending' || m < 90
                                 ? 'pending'
-                                : memberMatriculation;
-                            const date = day(createdAt).format('MMM Do, YYYY');
+                                : memberMatriculation
+                            const date = day(createdAt).format('MMM Do, YYYY')
                             const date2 = day(dateOfBirth)
                               .add(22, 'hour')
-                              .format('MMM Do, YYYY');
+                              .format('MMM Do, YYYY')
 
                             return (
                               <tr key={_id}>
@@ -200,7 +199,7 @@ const MembersContainer = () => {
                                   </div>
                                 </td>
                               </tr>
-                            );
+                            )
                           })}
                         </tbody>
                       </table>
@@ -215,6 +214,6 @@ const MembersContainer = () => {
         )}
       </div>
     </section>
-  );
-};
-export default MembersContainer;
+  )
+}
+export default MembersContainer
