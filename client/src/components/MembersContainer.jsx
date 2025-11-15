@@ -158,7 +158,9 @@ const MembersContainer = () => {
                                 </td>
                                 <td className={TdStyle.TdStyle}>{firstName}</td>
                                 <td className={TdStyle.TdStyle}>{date2}</td>
-                                <td className={TdStyle.TdStyle}>{m}</td>
+                                <td className={TdStyle.TdStyle}>
+                                  {Intl.NumberFormat('en-US').format(m)}
+                                </td>
                                 <td className={TdStyle.TdStyle}>
                                   {delegateRecommendation}
                                 </td>
