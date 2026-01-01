@@ -37,9 +37,9 @@ const Fatherland = () => {
             />
             <AccordionItem
               header='SAGI NIGERIA'
-                //text='Page Under construction'
-              text='Click on the link below to register your loved ones living back in Nigeria with saginig.org in order to get together with other brothers and sisters  to make it easier if heaven for bits, one of them falls.'
-              url='https//www.saginigeria.org'
+                text='Page Under construction'
+              //text='Click on the link below to register your loved ones living back in Nigeria with saginig.org in order to get together with other brothers and sisters  to make it easier if heaven for bits, one of them falls.'
+             // url='https//www.saginigeria.org'
             />
             <AccordionItem
               header='SAGI GHANA'
